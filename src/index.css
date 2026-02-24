@@ -1,12 +1,10 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;600&display=swap");
+@import "tailwindcss";
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 :root {
@@ -25,11 +23,8 @@ html {
 body {
   background: var(--bg);
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--mint);
-  color: #000;
+  margin: 0;
+  padding: 0;
 }
 
 ::-webkit-scrollbar {
@@ -89,16 +84,6 @@ body {
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 @keyframes scan {
   0% {
     transform: translateY(-100%);
@@ -114,15 +99,6 @@ body {
   }
   100% {
     background-position: 200% center;
-  }
-}
-
-@keyframes border-spin {
-  0% {
-    --angle: 0deg;
-  }
-  100% {
-    --angle: 360deg;
   }
 }
 

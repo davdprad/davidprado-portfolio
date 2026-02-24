@@ -1,19 +1,27 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 
-interface MagneticBtnProps extends React.ComponentPropsWithoutRef<"button"> {
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+};
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  href?: undefined;
+};
+
+type MagneticBtnProps = {
   children: React.ReactNode;
   className?: string;
-  href?: string;
-}
+} & (AnchorProps | ButtonProps);
 
 export default function MagneticBtn({
   children,
   className,
   href,
+  style,
   ...props
 }: MagneticBtnProps) {
-  const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 20 });
@@ -38,7 +46,7 @@ export default function MagneticBtn({
     <Tag
       ref={ref as any}
       href={href}
-      style={{ x: sx, y: sy }}
+      style={{ x: sx, y: sy, ...style }}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       className={className}

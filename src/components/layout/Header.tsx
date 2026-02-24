@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import MagneticBtn from "../MagneticBtn";
+import { useEffect } from "react";
 
 interface HeaderProps {
   navLinks: string[];
@@ -13,95 +14,37 @@ export default function Header({
   setMenuOpen,
 }: HeaderProps) {
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        zIndex: 1000,
-        backdropFilter: "blur(20px)",
-        borderBottom: "1px solid var(--border)",
-        background: "rgba(6,6,8,0.7)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          height: 64,
-        }}
-      >
+    <header className="fixed top-0 w-full z-1000 backdrop-blur-[20px] border-b border-(--border) bg-(--card)/60">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 flex justify-between items-center h-16">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 14,
-              color: "var(--mint)",
-              opacity: 0.7,
-            }}
-          >
+          <span className="font-mono font-extrabold text-(--mint) opacity-70">
             //{" "}
           </span>
-          <span style={{ fontWeight: 800, letterSpacing: 1 }}>David Prado</span>
+          <span className="font-extrabold tracking-[-1px]">David Prado</span>
         </motion.div>
 
-        <nav
-          style={{ display: "flex", gap: 8, alignItems: "center" }}
-          className="desktop-nav"
-        >
-          {navLinks.map((label, i) => (
+        <nav className="hidden md:flex gap-2 items-center">
+          {navLinks.map((label) => (
             <motion.a
               key={label}
               href={`#${label.toLowerCase()}`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 + 0.3 }}
-              style={{
-                color: "rgba(255,255,255,0.6)",
-                textDecoration: "none",
-                fontSize: 13,
-                padding: "6px 14px",
-                borderRadius: 99,
-                transition: "all 0.2s",
-                fontFamily: "'JetBrains Mono', monospace",
-                fontWeight: 400,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--mint)";
-                e.currentTarget.style.background = "rgba(0,255,209,0.07)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "rgba(255,255,255,0.6)";
-                e.currentTarget.style.background = "transparent";
-              }}
+              className="text-white/60 bg-transparent no-underline text-[14px] px-3.5 py-1.5 rounded-full
+                          transition-all duration-200 font-mono font-normal
+                          hover:text-(--mint) hover:bg-(--mint)/10"
             >
               {label}
             </motion.a>
           ))}
+
           <MagneticBtn
             href="mailto:davidprado0113@gmail.com"
-            style={{
-              background: "var(--mint)",
-              color: "#000",
-              border: "none",
-              padding: "8px 20px",
-              borderRadius: 99,
-              fontSize: 13,
-              fontWeight: 700,
-              cursor: "pointer",
-              textDecoration: "none",
-              fontFamily: "'Syne', sans-serif",
-              marginLeft: 8,
-              display: "inline-block",
-            }}
+            className="inline-block text-black bg-(--mint) no-underline text-[13px] px-5 py-2 rounded-full font-syne font-bold cursor-pointer ml-2"
           >
             Contratar
           </MagneticBtn>
@@ -126,37 +69,43 @@ export default function Header({
           />
         </button>
       </div>
-      <AnimatePresence>
+
+      {/* Container do Menu */}
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+          menuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        } border-t border-t-(--border)`}
+      >
+        <div className="overflow-hidden">
+          <div className="flex flex-col gap-3 px-6 py-5">
+            {navLinks.map((label) => (
+              <a
+                key={label}
+                href={`#${label.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-white/70 no-underline text-[14px] py-2 font-mono hover:text-(--mint) transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            style={{
-              overflow: "hidden",
-              borderTop: "1px solid var(--border)",
-            }}
+            className="overflow-hidden border-t border-t-(--border)"
           >
-            <div
-              style={{
-                padding: "20px 24px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 12,
-              }}
-            >
+            <div className="flex flex-col gap-3 px-6 py-5">
               {navLinks.map((label) => (
                 <a
                   key={label}
                   href={`#${label.toLowerCase()}`}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    color: "rgba(255,255,255,0.7)",
-                    textDecoration: "none",
-                    padding: "8px 0",
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 14,
-                  }}
+                  className="text-white/70 no-underline text-[14px] py-2 font-mono"
                 >
                   {label}
                 </a>
@@ -164,7 +113,7 @@ export default function Header({
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </header>
   );
 }

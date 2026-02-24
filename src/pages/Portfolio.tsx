@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Code2, Layers, Zap } from "lucide-react";
 import useScramble from "../hooks/useScramble";
-import type { ProjectsProps } from "../components/layout/Main";
 import GridBg from "../components/GridBg";
 import Orbs from "../components/Orbs";
 import Header from "../components/layout/Header";
 import Main from "../components/layout/Main";
+import type { ProjectsProps } from "../types/projects";
+import Footer from "../components/layout/Footer";
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,12 +67,6 @@ export default function Portfolio() {
     "Git",
   ];
 
-  // const stats: StatsProps[] = [
-  //   { value: 3, suffix: "+", label: "Anos aprendendo" },
-  //   { value: 10, suffix: "+", label: "Projetos entregues" },
-  //   { value: 100, suffix: "%", label: "Dedicação total" },
-  // ];
-
   const navLinks: string[] = ["Sobre", "Projetos", "Habilidades", "Contato"];
 
   return (
@@ -98,37 +93,10 @@ export default function Portfolio() {
         />
 
         {/* ─── MAIN ─── */}
-        <Main
-          heroTitle={heroTitle}
-          // stats={stats}
-          projects={projects}
-          skills={skills}
-        />
+        <Main heroTitle={heroTitle} projects={projects} skills={skills} />
 
-        <footer
-          style={{
-            textAlign: "center",
-            padding: "24px",
-            borderTop: "1px solid var(--border)",
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 12,
-            color: "rgba(255,255,255,0.2)",
-          }}
-        >
-          © {new Date().getFullYear()} David Prado — Feito com muito café ☕
-        </footer>
-
-        {/* Responsive overrides */}
-        <style>{`
-          @media (max-width: 768px) {
-            .desktop-nav { display: none !important; }
-            .burger { display: flex !important; }
-            section > div[style*="grid-template-columns: 1fr 1fr"] {
-              grid-template-columns: 1fr !important;
-              gap: 40px !important;
-            }
-          }
-        `}</style>
+        {/* ── FOOTER ── */}
+        <Footer />
       </div>
     </>
   );
