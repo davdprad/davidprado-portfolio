@@ -5,10 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/davidprado-portfolio/",
-  // server: {
-  //   host: true,
-  //   port: 3000,
-  //   allowedHosts: true,
-  // },
+  server: {
+    host: true,
+    port: 3000,
+    allowedHosts: true,
+  },
 });
