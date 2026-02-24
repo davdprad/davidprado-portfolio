@@ -23,13 +23,22 @@ export default function Portfolio() {
 
   const projects: ProjectsProps[] = [
     {
+      icon: Layers,
+      tag: "Next.js · BFF · JWT · Nest.js",
+      title: "Sistema de Gestão Clínica",
+      description:
+        "Plataforma web multi-perfil para gestão integrada de exames, empresas e pacientes — com controle de acesso por roles e fluxos otimizados para cada tipo de usuário.",
+      color: "#3D6BFF",
+      image: "gestao_clinica2.png",
+    },
+    {
       icon: Zap,
       tag: "ReactJS · FastAPI",
       title: "Checklist Movies",
       description:
         "Aplicação fullstack para descobrir e organizar filmes em tempo real, integrando a API do TMDB com um backend em FastAPI e interface reativa em React.",
       color: "#C000F6",
-      image: "checklist_movies2.png",
+      image: "checklist_movies3.png",
     },
     {
       icon: Code2,
@@ -39,15 +48,6 @@ export default function Portfolio() {
         "App Flutter com persistência local, animações fluidas e gerenciamento de estado com Riverpod.",
       color: "#FF2D78",
       image: "todo_app2.png",
-    },
-    {
-      icon: Layers,
-      tag: "Next.js · BFF · JWT · Nest.js",
-      title: "Sistema de Gestão Clínica",
-      description:
-        "Plataforma web multi-perfil para gestão integrada de exames, empresas e pacientes — com controle de acesso por roles e fluxos otimizados para cada tipo de usuário.",
-      color: "#3D6BFF",
-      image: "gestao_clinica1.png",
     },
   ];
 
