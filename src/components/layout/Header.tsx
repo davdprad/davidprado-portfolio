@@ -1,6 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import MagneticBtn from "../MagneticBtn";
-import { useEffect } from "react";
 
 interface HeaderProps {
   navLinks: string[];
@@ -91,29 +90,6 @@ export default function Header({
           </div>
         </div>
       </div>
-
-      {/* <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-t-(--border)"
-          >
-            <div className="flex flex-col gap-3 px-6 py-5">
-              {navLinks.map((label) => (
-                <a
-                  key={label}
-                  href={`#${label.toLowerCase()}`}
-                  className="text-white/70 no-underline text-[14px] py-2 font-mono"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence> */}
     </header>
   );
 }
