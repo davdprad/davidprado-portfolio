@@ -11,7 +11,7 @@ export default function HeroSection({ heroTitle }: { heroTitle: string }) {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-[clamp(32px,10vw,64px)] font-extrabold leading-[1.1] mb-4 max-w-[100vw] mx-auto wrap-break-word"
       >
-        <span className="">{heroTitle}</span>
+        <span className="glow-text">{heroTitle}</span>
       </motion.h1>
 
       <motion.div
