@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import TiltCard from "../TiltCard";
-import { ArrowUpRight } from "lucide-react";
+// import { ArrowUpRight } from "lucide-react";
 import type { ProjectsProps } from "../../types/projects";
 
 export default function ProjectsSection({
@@ -93,14 +93,14 @@ export default function ProjectsSection({
                   <p className="text-white/45 text-[14px] leading-[1.7] font-mono font-light flex-1">
                     {description}
                   </p>
-                  <div
+                  {/* <div
                     className="mt-4.5 flex items-center gap-1.5 text-[13px] font-bold"
                     style={{
                       color,
                     }}
                   >
                     Ver projeto <ArrowUpRight size={14} />
-                  </div>
+                  </div> */}
                 </div>
               </TiltCard>
             </motion.div>
